@@ -1,0 +1,84 @@
+    <!DOCTYPE html>
+    <html lang="pt">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png' ) }}"/>
+            <title>Providers App</title>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+            <script src="{{url_for('static', filename='index.js')}}" defer></script>
+            <script src="{{url_for('static', filename='navbar.js')}}" defer></script>
+            <!--DEBUG--> 
+            <!-- <link rel="stylesheet" type="text/css" href="/static/style.css">  -->
+            <!--DEBUG-->
+        </head>
+        <body>
+            <main>
+                <nav class="disableSelect topnav active">
+                    <ul>
+                        <li><img alt='main logo, FINEP' id="logo" src="{{ url_for('static', filename='acme-logo.png') }}"/></li>
+                    </ul>
+                </nav>
+                <nav class="disableSelect topnav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/result">Result</a></li>
+                        <li><a href="/create">Create</a></li>
+                        <li id="plus-font" class="push-right"><a>+font</a></li>
+                        <li id="minus-font"><a>-font</a></li>
+                    </ul>   
+                </nav>
+                <div id="main-div" class="main-container-index">
+                    <header>
+                        <h1 class="h1-index">Providers App</h1> 
+                        <p class="header-desc">This app will process and nicely display data from your company's providers.</p>
+                    </header>
+                    <div class="working-space">
+                        <hr>
+                        <div class="sidebyside">
+                            <div id="sidebar" class="submain sidebar">
+                                <legend class="sidebar-item">github:</legend>
+                                <p class="sidebar-item"><a href="https://github.com/joaovictorbarrera" target="_blank">github.com/joaovictorbarrera</a></p>
+                                <hr class="sidebar-item">
+                                <legend class="sidebar-item">ajuda:</legend>
+                                <p class="sidebar-item">
+                                    <a href="https://wa.me/12345678910" target="_blank">contact</a> | 
+                                    <a href="/format">formato</a>
+                                </p>
+                                <hr class="sidebar-item">
+                                <legend class="sidebar-item">latest build:</legend>
+                                <span class="sidebar-item">ProvidersApp v1.0</span>
+                            </div>
+                            <div class="submain window-div">
+                                <form id="file-form" method=post enctype=multipart/form-data action=/uploaded-files>
+                                    <legend>Upload a formatted CSV file:</legend>
+                                    <div class="file-buttons-container">
+                                        <button class="orange-button" type="button" id="cloud-button">
+                                            <div class="align-icon-to-text">
+                                                    <img id="cloud-button-img" class="icon" src="{{ url_for('static', filename='upload-cloud.png') }}">
+                                                    <span>Upload File</span>
+                                            </div>
+                                        </button>
+                                        <button id="choose-open" class="orange-button" type="button"><span>Select</span></button>
+                                        <div class="choose-popup">
+                                            <button id="choose-close" class="orange-button popup-button" type="button">Close</button>
+                                            <ul class="choose-list">
+                                            </ul>
+                                        </div>
+                                        <button class="orange-button" type="submit" form="file-form"><span>Submit</span></button>
+                                        <input style="display: none;" id="file-upload-button" type="file" name="file-db" accept=".csv" required>
+                                    </div>
+                                    <span id="filename-box"></span>   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <hr>
+                    <p>Made with ❤️ | @2022 - joaovictorbarrera</p>
+                </footer>
+            </main>
+        </body>   
+    </html>

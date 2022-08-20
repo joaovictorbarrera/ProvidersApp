@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Format</title>
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png' ) }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <style>
+            
+        </style>
+        <script src="{{url_for('static', filename='navbar.js')}}" defer></script>
+    </head>
+    <body>
+        <main class="main">
+            <nav class="disableSelect topnav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/result">Result</a></li>
+                    <li><a href="/create">Create</a></li>
+                    <li id="plus-font" class="push-right"><a>+font</a></li>
+                    <li id="minus-font"><a>-font</a></li>
+                </ul>   
+            </nav>
+            <div class="format">
+                <table>
+                    <thead>
+                        <th>cols</th>
+                        <th>type</th>
+                        <th>example</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Provider</td>
+                            <td>string</td>
+                            <td>ACNE</td>
+                        </tr>
+                        <tr>
+                            <td>Department</td>
+                            <td>DSGO | DSTI | DITI</td>
+                            <td>DSGO</td>
+                        </tr>
+                        <tr>
+                            <td>Date signed</td>
+                            <td>date: YYYY/MM/DD</td>
+                            <td>2002/10/14</td>
+                        </tr>
+                        <tr>
+                            <td>Duration</td>
+                            <td>Number of months</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>Date Planning Starts</td>
+                            <td>data: YYYY/MM/DD</td>
+                            <td>2002/10/14</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>String: started | not-started | sent | concluded</td>
+                            <td>started</td>
+                        </tr>
+                        <tr>
+                            <td>Date prices offer received</td>
+                            <td>date: YYYY/MM/DD</td>
+                            <td>2002/10/14</td>
+                        </tr>
+                        <tr>
+                            <td>Date prices map finished</td>
+                            <td>date: YYYY/MM/DD</td>
+                            <td>2002/10/14</td>
+                        </tr>
+                        <tr>
+                            <td>Date sent to analysis</td>
+                            <td>date: YYYY/MM/DD</td>
+                            <td>2002/10/14</td>
+                        </tr>
+                        <tr>
+                            <td>Date concluded</td>
+                            <td>date: YYYY/MM/DD</td>
+                            <td>2002/10/14</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <footer>
+                <hr>
+                <p>Made with ❤️ | @2022 - joaovictorbarrera</p>
+            </footer>
+        </main>
+    </body>
+</html>
