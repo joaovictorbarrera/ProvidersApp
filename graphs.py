@@ -8,9 +8,9 @@ def get_graphs(dfDisplay):
     graph1_2 = get_bar_graph_percentage_delay(dfDisplay)
     graph2_1 = get_bar_graph_conclusion_after_deadline_indicator(dfDisplay)
     graph2_2 = get_pie_chart_delayed_vs_ontime(dfDisplay)
-    graph3_1 = get_graph_department_days_planning_sent(dfDisplay, "DSGO")
-    graph3_2 = get_graph_department_days_planning_sent(dfDisplay, "DSTI")
-    graph4_1 = get_graph_department_days_planning_sent(dfDisplay, "DITI")
+    graph3_1 = get_graph_department_days_planning_sent(dfDisplay, "DEVELOPMENT-DEP")
+    graph3_2 = get_graph_department_days_planning_sent(dfDisplay, "INFRASTRUCTURE-DEP")
+    graph4_1 = get_graph_department_days_planning_sent(dfDisplay, "CORP-DEP")
     graph4_2 = get_graph_department_days_planning_sent(dfDisplay, all=True)
     return (
         graph1_1,
