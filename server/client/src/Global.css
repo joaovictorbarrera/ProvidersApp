@@ -1,0 +1,60 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Kievit';
+    src: url('../public/fonts/KievitOT-Regular.eot');
+    src: url('../public/fonts/KievitOT-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../public/fonts/KievitOT-Regular.woff2') format('woff2'),
+        url('../public/fonts/KievitOT-Regular.woff') format('woff'),
+        url('../public/fonts/KievitOT-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    font-family: 'Kievit', Tahoma;
+    font-size: 1.3vmax;
+    --primary: rgb(0,80,81);
+    --secondary:rgb(221,79,5);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--primary)
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(90%) !important
+}
+
+.orange-button {
+    border: none;
+    font-size: .9rem;
+    padding: .5rem;
+    border-radius: .2rem;
+    background-color: var(--secondary);
+    color: white;
+}
+
+@media screen and (max-width: 1000px) {
+    :root {
+        font-size: 2vmax;
+    }
+}

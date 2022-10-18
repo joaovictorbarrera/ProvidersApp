@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4760faa7.css",
+    "main.js": "/static/js/main.be90d218.js",
+    "static/media/KievitOT-Regular.eot": "/static/media/KievitOT-Regular.65493004075b650d8e93.eot",
+    "static/media/KievitOT-Regular.ttf": "/static/media/KievitOT-Regular.eb7ca18337d4ce590694.ttf",
+    "static/media/KievitOT-Regular.woff": "/static/media/KievitOT-Regular.f8f8aa2850fb39c77cc4.woff",
+    "static/media/KievitOT-Regular.woff2": "/static/media/KievitOT-Regular.3e4d1301872b84cacf6a.woff2",
+    "index.html": "/index.html",
+    "main.4760faa7.css.map": "/static/css/main.4760faa7.css.map",
+    "main.be90d218.js.map": "/static/js/main.be90d218.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4760faa7.css",
+    "static/js/main.be90d218.js"
+  ]
+}

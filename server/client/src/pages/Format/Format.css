@@ -1,0 +1,24 @@
+#format-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+#format-page table, #format-page table * {
+    border:3px solid black; 
+    border-collapse: collapse; 
+    text-align:left;
+}
+#format-page td, #format-page th {
+    padding: 10px;
+}
+#format-page th {
+    text-align:center;
+}
+
+#format-page table {
+    margin-top: 1rem;
+}

@@ -1,0 +1,228 @@
+#create-page {
+    display: flex;
+    height: 1px;
+    min-height: 100%;
+}
+
+/* SIDEBAR */
+#create-page aside {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+    width: min-content;
+    position: relative;
+}
+
+#create-page aside > header {
+    padding: .25rem;
+    position: relative;
+    width: 100%;
+}
+
+.create-close-sidebar {
+    color: var(--primary);
+    font-size: 1.5rem;
+    position: absolute;
+    top: 100%;
+    translate: 0 -40%;
+    right: -.6rem;
+    fill-opacity: 1;
+}
+
+.create-close-sidebar > svg {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.create-open-sidebar {
+    font-size: 1.5rem;
+    position: absolute;
+    color: var(--primary);
+    top: 1rem;
+    left: -.3rem;
+}
+
+#create-page aside > ul {
+    width: 100%;
+}
+
+.create-file-entry {
+    position: relative;
+    background-color: var(--primary);
+    color: white;
+    padding: .25rem 0;
+    cursor: pointer;
+}
+
+.create-file-entry > span {
+    margin-inline: 2rem;
+}
+
+.create-file-entry.active {
+    background-color: var(--secondary);
+}
+
+.create-file-list > li:hover, .table-button:hover {
+    filter: brightness(90%);
+}
+
+.create-file-list > .create-add-file-section:hover {
+    filter:none
+}
+
+.create-add-file-section button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .25rem;
+}
+
+.create-add-file-section {
+    background-color: var(--secondary);
+    width: 100%;
+    color: white;
+    padding: .25rem 0;
+    cursor: pointer;
+}
+
+.create-add-file-section.create-new {
+    background-color: var(--primary);
+    cursor:auto;
+}
+
+.create-add-file-section.selecting > div {
+    display: flex;
+    justify-content:stretch;
+    gap: .25rem;
+    padding: .25rem;
+}
+
+.create-add-file-section.selecting > div > button {
+    font-size: .8rem;
+    width: 100%;
+    padding: .25rem;
+    color: white;
+    background-color: var(--primary);
+}
+
+.create-add-file-section.upload > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: .25rem;
+    gap: .25rem;
+}
+
+.create-add-file-section.upload > form button {
+    font-size: .8rem;
+    padding: .25rem;
+    background-color: var(--primary);
+    color: white;
+    width: 100%;
+}
+
+.create-add-file-section.upload > form > div {
+    display: flex;
+    gap: .25rem;
+}
+
+.create-add-file-section.error {
+    background-color: red;
+}
+
+.create-new-file-form input {
+    height: 100%;
+    width: 90%;
+}
+
+#create-add-file-back-button {
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-file-entry-button {
+    top: 50%;
+    translate: 0 -50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.create-file-entry-button.download {
+    left: .1rem;
+    color: white;
+}
+
+.create-file-entry-button.delete {
+    right: .1rem;
+    color: red;
+}
+
+.create-file-entry.active > .create-file-entry-button.delete {
+    color: rgb(145, 5, 5);
+}
+
+/* TABLE */
+.create-table-wrapper {
+    overflow: scroll;
+    width: 100%;
+    padding: 1rem;
+}
+
+.create-table {
+    border-collapse: collapse;
+    width: 100%;
+    height: max-content;
+    width: max-content;
+    text-align: center;
+}
+
+.create-table td:not(:first-child), .create-table th:not(:first-child) {
+    border: black solid 1px;
+}
+
+.create-table td, .create-table th {
+    font-size: .8rem;
+    padding: .4rem .2rem;
+}
+
+.create-table td:not(:first-child) {
+    min-width: 100px;
+}
+
+.create-table th:first-child {
+    width: 1.8rem;
+}
+
+.table-button {
+    border: none;
+    background: none;
+    width: 100%;
+    height: 100%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem !important;
+}
+
+.table-button.green {
+    color: green;
+}
+
+.table-button.red {
+    color: red;
+}
+
+.create-add-new-row td > * {
+    height: 100%;
+    width: 100%;
+    font-size: .6rem;
+}

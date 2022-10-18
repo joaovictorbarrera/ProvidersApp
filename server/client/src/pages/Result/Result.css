@@ -1,0 +1,79 @@
+/* #result-page {
+    display: flex;
+    flex-direction: column;
+} */
+
+#result-options {
+    background-color: var(--secondary);
+    filter: brightness(130%);
+    display: flex;
+    justify-content: flex-end;
+    padding-inline: 1rem;
+    width: 100%;
+}
+
+#result-options  .orange-button {
+    border-radius: 0;
+}
+
+#result-tables-container {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.result-table-wrapper {
+    padding: 1rem;
+    font-size: .8rem;
+}
+
+.result-table-wrapper > table {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+    height: max-content;
+}
+
+.result-table-wrapper td, .result-table-wrapper th {
+    border: black solid 1px;
+    padding: .4rem .2rem;
+    text-align: center;
+}
+
+.result-table-header {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.result-graphs-container {
+    padding: 0 1rem 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.result-table-wrapper > table td[data-light] {
+    color: white;
+}
+.result-table-wrapper > table td[data-light="Red"] {
+    background-color: red;
+}
+.result-table-wrapper > table td[data-light="Purple"] {
+    background-color: purple;
+}
+.result-table-wrapper > table td[data-light="Green"] {
+    background-color: green;
+}
+.result-table-wrapper > table td[data-light="Yellow"] {
+    color: black;
+    background-color: yellow;
+}
+
+@media screen and (max-width: 1000px) {
+    .result-graphs-container {
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+    }
+}

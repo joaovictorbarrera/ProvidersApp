@@ -1,0 +1,20 @@
+{
+  "name": "providersapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd server && pip -r requirements.txt && cd client && npm install && npm run build",
+    "start": "cd server && python main.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaovictorbarrera/ProvidersApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaovictorbarrera/ProvidersApp/issues"
+  },
+  "homepage": "https://github.com/joaovictorbarrera/ProvidersApp#readme"
+}
