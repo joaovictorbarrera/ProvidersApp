@@ -55,16 +55,16 @@ def file():
     initializeSessionIfAbsent(session)
     if not session or "uuid" not in session:
         return jsonify(error=True, message="No session"), 400
-    
+
     sessionID = session["uuid"]
     userFolder = os.path.join(DIR, "filesystem", str(sessionID))
-    
+
     if request.method == "GET":
         return file_get(userFolder)
-    
+
     if request.method == "POST":
         return file_post(request, userFolder)
-        
+
 
 # GET: GETS A FILE
 # DELETE: DELETES A FILE
@@ -73,22 +73,22 @@ def file_dynamic(filename):
     initializeSessionIfAbsent(session)
     if not session or "uuid" not in session:
         return jsonify(error=True, message="No session"), 400
-    
+
     sessionID = session["uuid"]
-    userFolder = os.path.join(DIR, "filesystem", str(sessionID)) 
-    
+    userFolder = os.path.join(DIR, "filesystem", str(sessionID))
+
     if not filename or filename == '':
         return jsonify(error=True, message="No filename included in request"), 400
-    
+
     file_path = os.path.join(userFolder, filename)
     if not os.path.exists(file_path):
         return jsonify(error=True, message="No file exists with that name"), 400
-    
+
     if request.method == "GET":
        return selected_file_get(userFolder, filename)
     if request.method == "DELETE":
         return selected_file_delete(file_path)
-            
+
 
 # GET: PROCESSES AND GETS RESULT FOR A FILE
 @app.route("/r/<filename>", methods=["GET"])
@@ -96,30 +96,30 @@ def result(filename):
     initializeSessionIfAbsent(session)
     if not session or "uuid" not in session:
         return jsonify(error=True, message="No session"), 400
-    
+
     if not filename or filename == '':
         return jsonify(error=True, message="no file given"), 400
-    
+
     sessionID = session["uuid"]
-    userFolder = os.path.join(DIR, "filesystem", str(sessionID))   
+    userFolder = os.path.join(DIR, "filesystem", str(sessionID))
     file_path = os.path.join(userFolder, filename)
-    
+
     return result_get(file_path)
-    
+
 # GET: CREATES EXCEL VERSION OF RESULT
 @app.route("/excel/<filename>", methods=["GET"])
 def excel(filename):
     initializeSessionIfAbsent(session)
     if not session or "uuid" not in session:
         return jsonify(error=True, message="No session"), 400
-    
+
     if not filename or filename == '':
         return jsonify(error=True, message="no file given"), 400
-    
+
     sessionID = session["uuid"]
-    userFolder = os.path.join(DIR, "filesystem", str(sessionID))   
+    userFolder = os.path.join(DIR, "filesystem", str(sessionID))
     file_path = os.path.join(userFolder, filename)
-    
+
     return excel_get(file_path, userFolder)
 
 # GET: GET ALL LINES
@@ -130,26 +130,26 @@ def create_dynamic(filename):
     initializeSessionIfAbsent(session)
     if not session or "uuid" not in session:
         return jsonify(error=True, message="No session"), 400
-    
+
     if not filename or filename == '':
             return jsonify(error=True, message="no file given"), 400
-        
+
     sessionID = session["uuid"]
-    userFolder = os.path.join(DIR, "filesystem", str(sessionID))   
+    userFolder = os.path.join(DIR, "filesystem", str(sessionID))
     file_path = os.path.join(userFolder, filename)
-    
+
     if not os.path.exists(file_path):
         return jsonify(error=True, message="file not found"), 400
-    
+
     if request.method == "GET":
         return create_get(file_path)
-        
+
     if request.method == "POST":
         return create_post(request, file_path)
-        
+
     if request.method == "DELETE":
         return create_delete(request, file_path)
-            
+
 # CLIENT
 
 @app.route('/', defaults={'path': ''})
@@ -165,5 +165,4 @@ def catch_all(path):
         return "Internal server error", 500
 
 if __name__ == "__main__":
-    app.run(debug=True, port=os.environ.get("PORT") if os.environ.get("PORT") else 6060)
-    
+    app.run(port=os.environ.get("PORT") if os.environ.get("PORT") else 6060)

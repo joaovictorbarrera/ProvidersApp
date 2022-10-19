@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd server && pip -r requirements.txt && cd client && npm install && npm run build",
+    "build": "cd server && pip install -r requirements.txt && cd client && npm install && npm run build",
     "start": "cd server && python main.py"
   },
   "repository": {
