@@ -165,4 +165,4 @@ def catch_all(path):
         return "Internal server error", 500
 
 if __name__ == "__main__":
-    app.run(port=os.environ.get("PORT") if os.environ.get("PORT") else 6060)
+    app.run(port=os.environ.get("PORT") if os.environ.get("PORT") else 6060, host="0.0.0.0")
