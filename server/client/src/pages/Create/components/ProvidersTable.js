@@ -9,18 +9,18 @@ import { IoMdAddCircleOutline } from "react-icons/io"
 
 export default function ProvidersTable({activeFileName}) {
     const [data, error, loading, refreshLines] = useGet(`${urlEnum.CREATE_URL}/${activeFileName}`)
-  
+
     const csvData = data == null ? [] : data
-  
+
     function onSubmit(e) {
       e.preventDefault()
       const formData = new FormData(e.target)
       const csvLine = buildCSVLine(formData)
-  
+
       apiPOST(
-        `${urlEnum.CREATE_URL}/${activeFileName}`, 
-        JSON.stringify({line: csvLine}), 
-        {headers: 
+        `${urlEnum.CREATE_URL}/${activeFileName}`,
+        JSON.stringify({line: csvLine}),
+        {headers:
           {
             "Content-Type":"application/json"
           }
@@ -30,28 +30,29 @@ export default function ProvidersTable({activeFileName}) {
         refreshLines()
         if (result.error) alert(result.error)
       })
-  
+
     }
-  
+
     function buildCSVLine(formData) {
       const commas = 9
-  
+
       let values = [...formData.values()]
 
       values = values.map(value => value.includes(",") ? `"${value}"`: value)
 
       let csvLine = values.join(",")
-  
+
       for (let i = 0; i < commas - (values.length - 1); i++) {
         csvLine += ","
       }
-  
+
       return csvLine
     }
 
     function deleteLine(e) {
       if (window.confirm("Are you sure you want to delete this line?")) {
-        const index = e.target.getAttribute('data-index')
+        const button = e.target.closest("button")
+        const index = button.getAttribute('data-index')
 
         apiDELETE(`${urlEnum.CREATE_URL}/${activeFileName}?${new URLSearchParams({index})}`)
         .then(result => {
@@ -70,7 +71,7 @@ export default function ProvidersTable({activeFileName}) {
         const c = row[runner]
 
         if (c === '"') ignoreComma = !ignoreComma
-        
+
         if (c === "," && !ignoreComma) {
           let value = row.substring(left, runner)
           if (value.startsWith('"') && value.endsWith('"')) {
@@ -84,7 +85,7 @@ export default function ProvidersTable({activeFileName}) {
 
       return values
     }
-  
+
     return (
     <div className="create-table-wrapper">
       <form onSubmit={onSubmit} encType="multipart/form-data">
@@ -105,20 +106,26 @@ export default function ProvidersTable({activeFileName}) {
             </tr>
           </thead>
           <tbody>
-            {loading ? 
+            {loading ?
             <tr><td><AnimatedDots text={"Loading"}/></td></tr> :
             error ? <tr><td>{error}</td></tr> :
             <>
-            {csvData.map((row, rowIndex) => 
-            <tr key={JSON.stringify(row)+rowIndex}>
-              <td><button type="button" onClick={deleteLine} data-index={rowIndex} className="table-button red"><FiTrash2 /></button></td>
-              {parseCSVData(row).map((item, itemIndex) => 
-              <td key={itemIndex}>
-                {!item ? "N/A" : item}
-              </td>)}
-            </tr>
-            )}
-  
+            {csvData.map((row, rowIndex) => {
+              return (
+                <tr key={JSON.stringify(row)+rowIndex}>
+                  <td>
+                    <button type="button" onClick={deleteLine} data-index={rowIndex} className="table-button red">
+                      <FiTrash2 />
+                    </button>
+                  </td>
+                  {parseCSVData(row).map((item, itemIndex) =>
+                  <td key={itemIndex}>
+                    {!item ? "N/A" : item}
+                  </td>)}
+                </tr>
+              )
+            })}
+
             <AddNewRow />
             </>}
           </tbody>
@@ -127,17 +134,17 @@ export default function ProvidersTable({activeFileName}) {
     </div>
     )
   }
-  
+
   function AddNewRow() {
     const [status, setStatus] = useState("not-started")
-  
+
     return (
       <tr className="create-add-new-row">
         <td><button className="table-button green" type="submit"><IoMdAddCircleOutline /></button></td>
         <td><input placeholder="Enter name..." type="text" name="provider-name" required/></td>
         <td>
           <select defaultValue={"DEVELOPMENT-DEP"} name="provider-department" required>
-            <option>DEVELOPMENT-DEP</option> 
+            <option>DEVELOPMENT-DEP</option>
             <option>INFRASTRUCTURE-DEP</option>
             <option>CORP-DEP</option>
           </select>
@@ -147,7 +154,7 @@ export default function ProvidersTable({activeFileName}) {
         <td><input type="date" name="provider-date-planning-starts" required/></td>
         <td>
           <select value={status} onChange={e => setStatus(e.target.value)} name="provider-status" required>
-            <option>not-started</option> 
+            <option>not-started</option>
             <option>started</option>
             <option>sent</option>
             <option>concluded</option>

@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DIR = os.path.dirname(__file__)
+DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_FOLDER_PATH = os.path.join(DIR, "client/build")
 
 # inject react env vars
@@ -37,8 +37,9 @@ if html_content.find(f"window.{react_var_names[0]}") < 0:
     react_html_file.close()
 
 app = Flask(__name__, static_folder=None)
-CORS(app, origins=["http://192.168.0.3:3000", "http://localhost:3000"], supports_credentials=True)
+CORS(app, origins=["http://192.168.0.3:3000"], supports_credentials=True)
 
+# app.config["SESSION_COOKIE_DOMAIN"] = "http://127.0.0.1"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7)
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_FILE_DIR"] = os.path.join(DIR, "sessions")
@@ -155,7 +156,6 @@ def create_dynamic(filename):
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    print(path)
     try:
         try:
             return send_file(os.path.join(PUBLIC_FOLDER_PATH, path))
