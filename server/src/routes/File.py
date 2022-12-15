@@ -69,10 +69,12 @@ def file_post(request, userFolder):
         if isSampleRequest:
             try:
                 SAMPLE_FILE_PATH = str(Path(os.path.abspath(__file__)).parents[2].joinpath("sample csvs\\sample.csv"))
+                print(SAMPLE_FILE_PATH)
+                print(userFolder)
                 shutil.copy2(SAMPLE_FILE_PATH, userFolder)
                 return jsonify(message="success"), 200
             except:
-                jsonify(error=True, message="Something went wrong."), 500
+                return jsonify(error=True, message="Something went wrong."), 500
 
     return jsonify(error=True, message="No file"), 400
 
